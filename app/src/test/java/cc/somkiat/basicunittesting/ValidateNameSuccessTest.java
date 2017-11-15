@@ -17,7 +17,7 @@ public class ValidateNameSuccessTest {
     }
 
     @Test
-    public void nameHasOnlyAlphabet() {
+    public void namePatternIsCorrect() {
         NameValidator validator = new NameValidator();
         ValidateResult result = validator.validate("Taweewong Tocharoen");
         assertTrue(result.getMessage(), result.isValid());
