@@ -11,7 +11,7 @@ import static junit.framework.Assert.assertTrue;
 public class ValidateEmailSuccessTest {
 
     @Test
-    public void emailIsNotEmpty() throws ValidateException {
+    public void emailIsNotEmpty() {
         EmailValidator validator = new EmailValidator();
         ValidateResult result = validator.validate("taweewong@gmail.com");
         assertTrue(result.getMessage(), result.isValid());
