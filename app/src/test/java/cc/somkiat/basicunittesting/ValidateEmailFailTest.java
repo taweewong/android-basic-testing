@@ -24,7 +24,7 @@ public class ValidateEmailFailTest {
     }
 
     @Test
-    public void emailPatternIsNotContainAtSign() {
+    public void emailIsNotContainAtSign() {
         EmailValidator validator = new EmailValidator();
         boolean result = validator.isEmailPatternCorrect("taweewong.tgmail.com");
         assertFalse("Email's pattern require non at sign", result);
