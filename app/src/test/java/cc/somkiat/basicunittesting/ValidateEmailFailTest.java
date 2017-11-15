@@ -24,6 +24,13 @@ public class ValidateEmailFailTest {
     }
 
     @Test
+    public void emailHasWrongUserName() {
+        EmailValidator validator = new EmailValidator();
+        boolean result = validator.isEmailPatternCorrect("ta$w#e e-wo+ng*t@gmail.com");
+        assertFalse("Email's pattern require wrong username", result);
+    }
+
+    @Test
     public void emailIsNotContainAtSign() {
         EmailValidator validator = new EmailValidator();
         boolean result = validator.isEmailPatternCorrect("taweewong.tgmail.com");
