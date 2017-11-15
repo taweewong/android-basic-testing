@@ -14,6 +14,7 @@ import static android.support.test.espresso.Espresso.closeSoftKeyboard;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.replaceText;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -33,14 +34,14 @@ public class MainActivityTest {
         closeSoftKeyboard();
         onView(withId(R.id.userNameInput)).perform(replaceText("Taweewong Tocharoen"));
         onView(withId(R.id.emailInput)).perform(replaceText("taweewong.t@gmail.com"));
-        onView(withId(R.id.saveButton)).perform(click());
+        onView(withId(R.id.saveButton)).perform(scrollTo(), click());
     }
 
     @Test
     public void saveWithEmptyName() {
         closeSoftKeyboard();
         onView(withId(R.id.emailInput)).perform(replaceText("taweewong.t@gmail.com"));
-        onView(withId(R.id.saveButton)).perform(click());
+        onView(withId(R.id.saveButton)).perform(scrollTo(), click());
         onView(withText("Name is empty")).inRoot(getToastView()).check(matches(isDisplayed()));
     }
 
@@ -48,7 +49,7 @@ public class MainActivityTest {
     public void saveWithEmptyEmail() {
         closeSoftKeyboard();
         onView(withId(R.id.userNameInput)).perform(replaceText("Taweewong Tocharoen"));
-        onView(withId(R.id.saveButton)).perform(click());
+        onView(withId(R.id.saveButton)).perform(scrollTo(), click());
         onView(withText("Email is empty")).inRoot(getToastView()).check(matches(isDisplayed()));
     }
 
@@ -57,7 +58,7 @@ public class MainActivityTest {
         closeSoftKeyboard();
         onView(withId(R.id.userNameInput)).perform(replaceText("oat123 eiei inw za 007"));
         onView(withId(R.id.emailInput)).perform(replaceText("taweewong.t@gmail.com"));
-        onView(withId(R.id.saveButton)).perform(click());
+        onView(withId(R.id.saveButton)).perform(scrollTo(), click());
         onView(withText("Name Pattern is incorrect")).inRoot(getToastView()).check(matches(isDisplayed()));
     }
 
@@ -66,14 +67,14 @@ public class MainActivityTest {
         closeSoftKeyboard();
         onView(withId(R.id.userNameInput)).perform(replaceText("Taweewong Tocharoen"));
         onView(withId(R.id.emailInput)).perform(replaceText("taweewong.t"));
-        onView(withId(R.id.saveButton)).perform(click());
+        onView(withId(R.id.saveButton)).perform(scrollTo(), click());
         onView(withText("Email Pattern is incorrect")).inRoot(getToastView()).check(matches(isDisplayed()));
     }
 
     @Test
     public void revertButtonTest() {
         closeSoftKeyboard();
-        onView(withId(R.id.revertButton)).perform(click());
+        onView(withId(R.id.revertButton)).perform(scrollTo(), click());
         onView(withId(R.id.userNameInput)).check(matches(withText("")));
         onView(withId(R.id.emailInput)).check(matches(withText("")));
     }
