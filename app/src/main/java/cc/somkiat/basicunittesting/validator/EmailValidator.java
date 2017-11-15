@@ -8,7 +8,7 @@ public class EmailValidator {
 
     public ValidateResult validate(String email) {
         try {
-            isNotEmailEmpty(email);
+            isEmailNotEmpty(email);
             isEmailPatternCorrect(email);
         } catch (ValidateException e) {
             return new ValidateResult(false, e.getMessage());
@@ -17,7 +17,7 @@ public class EmailValidator {
         return new ValidateResult(true, "Email is valid");
     }
 
-    private void isNotEmailEmpty(String email) throws ValidateException {
+    private void isEmailNotEmpty(String email) throws ValidateException {
         if (email.isEmpty()) {
             throw new ValidateException("Email is empty");
         }
