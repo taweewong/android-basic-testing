@@ -10,7 +10,8 @@ public class NameValidator {
         try {
             isNameNotEmpty(name);
             isNamePatternCorrect(name);
-            isNameLengthIsBetweenTwoAndThirty(name);
+            isNameLengthLessThanThirty(name);
+            isNameLengthMoreThanTwo(name);
         } catch (ValidateException e) {
             return new ValidateResult(false, e.getMessage());
         }
@@ -32,9 +33,15 @@ public class NameValidator {
         }
     }
 
-    private void isNameLengthIsBetweenTwoAndThirty(String name) throws ValidateException {
-        if (name.length() <= 2 || name.length() >= 30) {
-            throw new ValidateException("Name is too short or too long");
+    private void isNameLengthMoreThanTwo(String name) throws ValidateException {
+        if (name.length() <= 2) {
+            throw new ValidateException("Name is too short");
+        }
+    }
+
+    private void isNameLengthLessThanThirty(String name) throws ValidateException {
+        if (name.length() >= 30) {
+            throw new ValidateException("Name is too long");
         }
     }
 }
