@@ -10,6 +10,7 @@ public class NameValidator {
         try {
             isNameEmpty(name);
             isNameHasOnlyAlphabet(name);
+            isNameLengthIsBetweenTwoAndThirty(name);
         } catch (ValidateException e) {
             return new ValidateResult(false, e.getMessage());
         }
@@ -28,6 +29,12 @@ public class NameValidator {
 
         if (!Pattern.matches(namePattern, name)) {
             throw new ValidateException("Name Pattern is incorrect");
+        }
+    }
+
+    private void isNameLengthIsBetweenTwoAndThirty(String name) throws ValidateException {
+        if (name.length() <= 2 || name.length() >= 30) {
+            throw new ValidateException("Name is too short or too long");
         }
     }
 }
