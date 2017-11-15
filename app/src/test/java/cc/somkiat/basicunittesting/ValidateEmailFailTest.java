@@ -36,4 +36,11 @@ public class ValidateEmailFailTest {
         boolean result = validator.isEmailPatternCorrect("taweewong.t@gmailcom");
         assertFalse("Email's pattern require wrong domain pattern", result);
     }
+
+    @Test
+    public void emailIsNotContainDomain() {
+        EmailValidator validator = new EmailValidator();
+        boolean result = validator.isEmailPatternCorrect("taweewong.t@");
+        assertFalse("Email's pattern require empty domain", result);
+    }
 }
