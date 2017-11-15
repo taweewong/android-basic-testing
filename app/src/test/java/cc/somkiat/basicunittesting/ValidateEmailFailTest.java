@@ -29,4 +29,11 @@ public class ValidateEmailFailTest {
         boolean result = validator.isEmailPatternCorrect("taweewong.tgmail.com");
         assertFalse("Email's pattern require non at sign", result);
     }
+
+    @Test
+    public void emailHasWrongDomainPattern() {
+        EmailValidator validator = new EmailValidator();
+        boolean result = validator.isEmailPatternCorrect("taweewong.t@gmailcom");
+        assertFalse("Email's pattern require wrong domain pattern", result);
+    }
 }
