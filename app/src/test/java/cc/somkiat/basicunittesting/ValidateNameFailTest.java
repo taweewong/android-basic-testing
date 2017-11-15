@@ -22,4 +22,11 @@ public class ValidateNameFailTest {
         ValidateResult result = validator.validate("Taweewong 123");
         assertFalse(result.getMessage(), result.isValid());
     }
+
+    @Test
+    public void nameIsTooShort() {
+        NameValidator validator = new NameValidator();
+        ValidateResult result = validator.validate("Ta");
+        assertFalse(result.getMessage(), result.isValid());
+    }
 }
