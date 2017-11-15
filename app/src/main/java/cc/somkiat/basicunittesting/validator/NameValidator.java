@@ -9,7 +9,7 @@ public class NameValidator {
     public ValidateResult validate(String name) {
         try {
             isNameNotEmpty(name);
-            isNameHasOnlyAlphabet(name);
+            isNamePatternCorrect(name);
             isNameLengthIsBetweenTwoAndThirty(name);
         } catch (ValidateException e) {
             return new ValidateResult(false, e.getMessage());
@@ -24,7 +24,7 @@ public class NameValidator {
         }
     }
 
-    private void isNameHasOnlyAlphabet(String name) throws ValidateException {
+    private void isNamePatternCorrect(String name) throws ValidateException {
         String namePattern = "[a-zA-Z]+ ?[a-zA-Z]+";
 
         if (!Pattern.matches(namePattern, name)) {
@@ -33,7 +33,7 @@ public class NameValidator {
     }
 
     private void isNameLengthIsBetweenTwoAndThirty(String name) throws ValidateException {
-        if (name.length() > 2 && name.length() < 30) {
+        if (name.length() <= 2 || name.length() >= 30) {
             throw new ValidateException("Name is too short or too long");
         }
     }
