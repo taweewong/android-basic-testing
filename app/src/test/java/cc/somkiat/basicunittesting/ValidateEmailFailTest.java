@@ -19,7 +19,14 @@ public class ValidateEmailFailTest {
     @Test
     public void emailPatternIsNotContainUsername() {
         EmailValidator validator = new EmailValidator();
-        boolean result = validator.isEmailPatternCorrect("@tgmailcom");
+        boolean result = validator.isEmailPatternCorrect("@tgmail.com");
         assertFalse("Email's pattern require empty username", result);
+    }
+
+    @Test
+    public void emailPatternIsNotContainAtSign() {
+        EmailValidator validator = new EmailValidator();
+        boolean result = validator.isEmailPatternCorrect("taweewong.tgmail.com");
+        assertFalse("Email's pattern require non at sign", result);
     }
 }
