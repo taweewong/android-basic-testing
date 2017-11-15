@@ -33,7 +33,7 @@ public class ValidateNameFailTest {
     @Test
     public void nameIsTooLong() {
         NameValidator validator = new NameValidator();
-        ValidateResult result = validator.validate("uvuvwevwevwe onyetenyevwe ugwemubwem ossas");
+        ValidateResult result = validator.validate("uvuvwevwevweonyetenyevweugwemubwemossas");
         assertFalse(result.getMessage(), result.isValid());
     }
 }
