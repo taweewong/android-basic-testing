@@ -17,7 +17,7 @@ public class ValidateEmailFailTest {
     }
 
     @Test
-    public void emailPatternIsNotContainUsername() {
+    public void emailIsNotContainUsername() {
         EmailValidator validator = new EmailValidator();
         boolean result = validator.isEmailPatternCorrect("@tgmail.com");
         assertFalse("Email's pattern require empty username", result);
