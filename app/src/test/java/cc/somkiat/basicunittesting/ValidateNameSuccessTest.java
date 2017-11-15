@@ -22,4 +22,11 @@ public class ValidateNameSuccessTest {
         ValidateResult result = validator.validate("Taweewong Tocharoen");
         assertTrue(result.getMessage(), result.isValid());
     }
+
+    @Test
+    public void nameLengthIsBetweenTwoAndThirty() {
+        NameValidator validator = new NameValidator();
+        ValidateResult result = validator.validate("Taweewong Tocharoen");
+        assertTrue(result.getMessage(), result.isValid());
+    }
 }
