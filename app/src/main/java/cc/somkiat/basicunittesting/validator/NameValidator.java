@@ -8,7 +8,7 @@ public class NameValidator {
 
     public ValidateResult validate(String name) {
         try {
-            isNameEmpty(name);
+            isNameNotEmpty(name);
             isNameHasOnlyAlphabet(name);
             isNameLengthIsBetweenTwoAndThirty(name);
         } catch (ValidateException e) {
@@ -18,7 +18,7 @@ public class NameValidator {
         return new ValidateResult(true, "Name is valid");
     }
 
-    private void isNameEmpty(String name) throws ValidateException {
+    private void isNameNotEmpty(String name) throws ValidateException {
         if (name.isEmpty()) {
             throw new ValidateException("Name is empty");
         }
@@ -33,7 +33,7 @@ public class NameValidator {
     }
 
     private void isNameLengthIsBetweenTwoAndThirty(String name) throws ValidateException {
-        if (name.length() <= 2 || name.length() >= 30) {
+        if (name.length() > 2 && name.length() < 30) {
             throw new ValidateException("Name is too short or too long");
         }
     }
