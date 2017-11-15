@@ -17,7 +17,7 @@ public class ValidateNameFailTest {
     }
 
     @Test
-    public void nameNotHasOnlyAlphabet() {
+    public void namePatternIsIncorrect() {
         NameValidator validator = new NameValidator();
         ValidateResult result = validator.validate("Taweewong 123");
         assertFalse(result.getMessage(), result.isValid());
@@ -27,6 +27,13 @@ public class ValidateNameFailTest {
     public void nameIsTooShort() {
         NameValidator validator = new NameValidator();
         ValidateResult result = validator.validate("Ta");
+        assertFalse(result.getMessage(), result.isValid());
+    }
+
+    @Test
+    public void nameIsTooLong() {
+        NameValidator validator = new NameValidator();
+        ValidateResult result = validator.validate("uvuvwevwevwe onyetenyevwe ugwemubwem ossas");
         assertFalse(result.getMessage(), result.isValid());
     }
 }
