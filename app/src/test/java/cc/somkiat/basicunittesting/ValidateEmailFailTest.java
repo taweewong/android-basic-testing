@@ -3,51 +3,51 @@ package cc.somkiat.basicunittesting;
 import org.junit.Test;
 
 import cc.somkiat.basicunittesting.validator.EmailValidator;
+import cc.somkiat.basicunittesting.validator.ValidateResult;
 
 import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertTrue;
 
 public class ValidateEmailFailTest {
 
     @Test
     public void emailIsEmpty() {
         EmailValidator validator = new EmailValidator();
-        boolean result = validator.isEmailEmpty("");
-        assertTrue("Email is not empty", result);
+        ValidateResult result = validator.validate("");
+        assertFalse(result.getMessage(), result.isValid());
     }
 
     @Test
     public void emailIsNotContainUsername() {
         EmailValidator validator = new EmailValidator();
-        boolean result = validator.isEmailPatternCorrect("@tgmail.com");
-        assertFalse("Email's pattern require empty username", result);
+        ValidateResult result = validator.validate("@tgmail.com");
+        assertFalse(result.getMessage(), result.isValid());
     }
 
     @Test
     public void emailHasWrongUserName() {
         EmailValidator validator = new EmailValidator();
-        boolean result = validator.isEmailPatternCorrect("ta$w#e e-wo+ng*t@gmail.com");
-        assertFalse("Email's pattern require wrong username", result);
+        ValidateResult result = validator.validate("ta$w#e e-wo+ng*t@gmail.com");
+        assertFalse(result.getMessage(), result.isValid());
     }
 
     @Test
     public void emailIsNotContainAtSign() {
         EmailValidator validator = new EmailValidator();
-        boolean result = validator.isEmailPatternCorrect("taweewong.tgmail.com");
-        assertFalse("Email's pattern require non at sign", result);
+        ValidateResult result = validator.validate("taweewong.tgmail.com");
+        assertFalse(result.getMessage(), result.isValid());
     }
 
     @Test
     public void emailHasWrongDomainPattern() {
         EmailValidator validator = new EmailValidator();
-        boolean result = validator.isEmailPatternCorrect("taweewong.t@gmailcom");
-        assertFalse("Email's pattern require wrong domain pattern", result);
+        ValidateResult result = validator.validate("taweewong.t@gmailcom");
+        assertFalse(result.getMessage(), result.isValid());
     }
 
     @Test
     public void emailIsNotContainDomain() {
         EmailValidator validator = new EmailValidator();
-        boolean result = validator.isEmailPatternCorrect("taweewong.t@");
-        assertFalse("Email's pattern require empty domain", result);
+        ValidateResult result = validator.validate("taweewong.t@");
+        assertFalse(result.getMessage(), result.isValid());
     }
 }
